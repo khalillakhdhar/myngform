@@ -1,0 +1,50 @@
+<form #todo="ngForm">
+    <div class="mb-3 text-center"><h2> Ajout des taches</h2></div>
+<div class="mb-3">
+    <label class="form-label">Titre</label>
+    <input type="text" required class="form-control"  name="titre" placeholder="votre titre ici" pattern="[A-Z a-z]{2,}" [(ngModel)]="tache.titre" #titre="ngModel">
+    <div class="alert alert-danger" *ngIf="titre.touched && !titre.valid">
+<div *ngIf="titre.errors && titre.errors['required']">veuillez saisir le titre </div>
+<div *ngIf="titre.errors && titre.errors['pattern']">veuillez saisir un titre valide! </div>
+
+    </div>
+    </div>
+    <div class="mb-3">
+    <label class="form-label">date</label>
+    <input type="datetime-local" required class="form-control" name="date" placeholder="votre date ici" [(ngModel)]="tache.date" #date="ngModel">
+    <div class="alert alert-danger" *ngIf="date.touched && !date.valid">
+<div *ngIf="date.errors && date.errors['required']">veuillez saisir la date </div>
+
+
+    </div>
+</div>
+    <div class="mb-3">
+    <label class="form-label">lieu</label>
+    <input type="text" required class="form-control" name="lieu" placeholder="votre lieu ici" [(ngModel)]="tache.lieu" #lieu="ngModel">
+    <div class="alert alert-danger" *ngIf="lieu.touched && !lieu.valid">
+<div *ngIf="lieu.errors && lieu.errors['required']">veuillez saisir le lieu </div>
+
+
+    </div>
+</div>
+    <div class="mb-3">
+    <label class="form-label">cause</label>
+    <input type="text" required class="form-control" name="cause" placeholder="votre cause" [(ngModel)]="tache.cause" #cause="ngModel">
+    <div class="alert alert-danger" *ngIf="cause.touched && !cause.valid">
+<div *ngIf="cause.errors && cause.errors['required']">veuillez saisir la cause </div>
+
+
+    </div>
+    <div class="mb-3">
+        <label>description</label>
+        <textarea class="form-control" name="description" placeholder="description"></textarea>
+
+    </div>
+    <div class="mb-3 text-center"> 
+        <button class="btn btn-primary"> ajouter</button>
+    </div>
+</div>
+
+
+
+</form>
