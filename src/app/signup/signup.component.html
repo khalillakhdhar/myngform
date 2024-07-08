@@ -1,0 +1,112 @@
+<form #myform="ngForm">
+  <div class="mb-3 text-center"><h2>Inscription</h2></div>
+  <div class="mb-3">
+    <label class="form-label"> Votre nom: </label>
+    <input
+      placeholder="votre nom ici"
+      pattern="[A-Z a-zéè']{3,30}"
+      type="text"
+      required
+      name="nom"
+      [(ngModel)]="user.nom"
+      #nom="ngModel"
+      class="form-control"
+    />
+    <br />
+    <div class="alert alert-danger" *ngIf="nom.touched && !nom.valid">
+      <div *ngIf="nom.errors && nom.errors['required']">
+        veuillez saisir le nom
+      </div>
+      <div *ngIf="nom.errors && nom.errors['pattern']">veuillez saisir un nom valide!</div>
+    </div>
+  </div>
+  <div class="mb-3">
+    <label class="form-label"> Votre prénom: </label>
+    <input
+      placeholder="votre prénom ici"
+      type="text"
+      required
+      name="prenom"
+      [(ngModel)]="user.prenom"
+      #prenom="ngModel"
+        pattern="[A-Z a-zéè']{3,30}"
+      class="form-control"
+    />
+    <div class="alert alert-danger" *ngIf="prenom.touched && !prenom.valid">
+        <div *ngIf="prenom.errors && prenom.errors['required']">
+          veuillez saisir le prénom
+        </div>
+        <div *ngIf="prenom.errors && prenom.errors['pattern']">veuillez saisir un prénom valide!</div>
+      </div>
+  </div>
+  <div class="mb-3">
+    <label class="form-label"> Votre email: </label>
+    <input
+      type="email"
+      placeholder="votre email ici"
+      name="mail"
+      required
+      [(ngModel)]="user.email"
+      #mail="ngModel"
+      class="form-control"
+    />
+    <div class="alert alert-danger" *ngIf="mail.touched && ! mail.valid">
+        <div *ngIf="mail.errors && mail.errors['required']">
+            veuillez saisir l'email
+        </div>
+        <div *ngIf="mail.errors && mail.errors['email']">
+            veuillez saisir un email valide
+        </div>
+    </div>
+  </div>
+  <div class="mb-3">
+    <label class="form-label"> Votre password: </label>
+    <input
+      type="password"
+      placeholder="votre mot de passe ici"
+      name="password"
+      required
+      [(ngModel)]="user.password"
+      #pass="ngModel"
+      class="form-control"
+    />
+    <div  class="alert alert-danger" *ngIf="pass.touched && !pass.valid">
+        <div *ngIf="pass.errors && pass.errors['required']"> veuillez saisir un mot de passe</div>
+    </div>
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Votre age</label>
+    <input
+      type="number"
+      min="16"
+      placeholder="votre age ici"
+      name="age"
+      required
+      max="36"
+      [(ngModel)]="user.age"
+      class="form-control"
+      #age="ngModel"
+    />
+    <div  class="alert alert-danger" *ngIf="age.touched && !age.valid">
+        <div *ngIf="pass.errors && pass.errors['required']"> veuillez saisir l'age</div>
+        <div *ngIf="pass.errors && pass.errors['min']"> veuillez saisir un age > 16 ans</div>
+        <div *ngIf="pass.errors && pass.errors['max']"> veuillez saisir un age < 36 ans</div>
+    </div>
+  </div>
+ 
+  <div class="mb-3">
+    <input
+      type="checkbox"
+      name="cd"
+      #cd="ngModel"
+      name="cd"
+      [(ngModel)]="conditions"
+    />
+    <label>j'ai lu et accepte les conditions</label>
+  </div>
+  <div class="text-center">
+    <button [disabled]="!conditions || myform.invalid" class="btn btn-primary">
+      envoyer
+    </button>
+  </div>
+</form>

@@ -1,0 +1,41 @@
+<form>
+    <div class="mb-3 text-center"><h2>Connexion</h2></div>
+
+    <div class="mb-3">
+        <label class="form-label"> Votre email: </label>
+        <input
+          type="email"
+          placeholder="votre email ici"
+          name="mail"
+          required
+          [(ngModel)]="user.email"
+          #mail="ngModel"
+          class="form-control"
+        />
+        <div class="alert alert-danger" *ngIf="mail.touched && ! mail.valid">
+            <div *ngIf="mail.errors && mail.errors['required']">
+                veuillez saisir l'email
+            </div>
+            <div *ngIf="mail.errors && mail.errors['email']">
+                veuillez saisir un email valide
+            </div>
+        </div>
+      </div>
+      <div class="mb-3">
+        <label class="form-label"> Votre password: </label>
+        <input
+          type="password"
+          placeholder="votre mot de passe ici"
+          name="password"
+          required
+          [(ngModel)]="user.password"
+          #pass="ngModel"
+          class="form-control"
+        />
+        <div  class="alert alert-danger" *ngIf="pass.touched && !pass.valid">
+            <div *ngIf="pass.errors && pass.errors['required']"> veuillez saisir un mot de passe</div>
+        </div>
+      </div>
+<div class="text-center"> <button class="btn btn-primary">envoyer</button></div>
+<a routerLink="./signup">S'inscrire?</a>
+</form>
